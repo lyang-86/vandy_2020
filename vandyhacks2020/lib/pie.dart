@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:vandyhacks2020/userinput.dart';
-import 'package:vandyhacks2020/navbar.dart';
+import 'userinput.dart';
+import 'global.dart' as globals;
+//import 'package:vandyhacks2020/navbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +35,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Map dataMap = UserInput([]).getExpenses();
+  Map dataMap = globals.user.expenses;
   List<Color> colorList = [
     Colors.red,
     Colors.green,
@@ -63,6 +64,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     final chart = PieChart(
       key: ValueKey(key),
       dataMap: dataMap,
@@ -133,7 +135,7 @@ class _HomePageState extends State<HomePage> {
           }
         },
       ),
-      bottomNavigationBar: NavBar(),
+//      bottomNavigationBar: NavBar(),
     );
   }
 }

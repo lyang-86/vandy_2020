@@ -1,10 +1,23 @@
 import 'dart:ffi';
 import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:vandyhacks2020/pie.dart';
 
 void main() {
-  UserInput user = new UserInput([]);
-  user.changeExpense('Rent', 1000);
-  print(user.getExpenses());
+  runApp(MaterialApp(
+
+    title: "User Input Button",
+
+    home: Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        child: Icon(Icons.add),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.black45,
+        tooltip: 'Add Expense/Income',
+      ),
+    ),
+  ));
 }
 
 class UserInput {
@@ -47,7 +60,7 @@ class UserInput {
   }
 
   void resetIncome(){
-    var income = new List();
+    income = new List();
   }
 
   Map getExpenses(){
