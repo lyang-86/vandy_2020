@@ -2,10 +2,14 @@ import 'dart:ffi';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:vandyhacks2020/pie.dart';
+import 'package:flutter/services.dart';
+
 
 void main() {
   runApp(new TileApp());
-/*
+  /*
+  runApp(MaterialApp
+
     title: "User Input Button",
 
     home: Scaffold(
@@ -22,7 +26,7 @@ void main() {
       ),
     ),
   ));
-*/
+   */
 }
 
 
@@ -41,6 +45,13 @@ class TileApp extends StatelessWidget {
             return new StuffInTiles(listOfTiles[index]);
           },
           itemCount: listOfTiles.length,
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: null,
+          child: Icon(Icons.add),
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.black45,
+          tooltip: 'Add Expense/Income',
         ),
       ),
     );
@@ -65,7 +76,8 @@ class StuffInTiles extends StatelessWidget {
           onLongPress: () => print("long press"),
           onTap: () => print("tap"),
           selected: true,
-          title: new Text(t.title, style: TextStyle(fontSize: 20,color:Colors.black),));
+          title: new Text(t.title, style: TextStyle(fontSize: 20,color:Colors.black),)
+      );
 
     return new ExpansionTile(
       key: new PageStorageKey<int>(3),
@@ -85,7 +97,8 @@ List<MyTile> listOfTiles = <MyTile>[
   new MyTile(
     'Add Expenses',
     <MyTile>[
-      new MyTile('Rent'),
+      new MyTile('Rent',)
+    ],
       new MyTile('Utility'),
       new MyTile('Subscriptions'),
       new MyTile('Bills'),
@@ -107,9 +120,10 @@ List<MyTile> listOfTiles = <MyTile>[
 
 class UserInput {
 
-  static const defaultExpenses = {'Rent': 0.0, 'Utility': 0.0, 'Subscriptions': 0.0, 'Bills': 0.0, 'Savings': 0.0, 'Other': 0.0};
+  static const defaultExpenses = {'Rent': 0.0, 'Utility': 0.0, 'Subscriptions': 0.0, 'Bills': 0.0, 'Savings': 0.0, 'Food': 0.0, 'Clothes': 0.0, 'Electronics': 0.0, 'Other': 0.0};
   var expenses = defaultExpenses;
   var income;
+  var lastWeeksExpenses = defaultExpenses;
 
   UserInput(List income){
     this.income = income;
