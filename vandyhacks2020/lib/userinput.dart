@@ -69,7 +69,7 @@ class StuffInTiles extends StatelessWidget {
 
     return new ExpansionTile(
       key: new PageStorageKey<int>(3),
-      title: new Text(t.title, style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,),
+      title: new Text(t.title, style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,),),
       children: t.children.map(_buildTiles).toList(),
     );
   }
