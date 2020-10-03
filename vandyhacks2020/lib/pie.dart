@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:vandyhacks2020/userinput.dart';
+import 'package:vandyhacks2020/navbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,34 +34,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Map<String, double> dataMap = {
-    "Flutter": 5,
-    "React": 3,
-    "Xamarin": 2,
-    "Ionic": 2,
-  };
+  Map dataMap = UserInput([]).getExpenses();
   List<Color> colorList = [
     Colors.red,
     Colors.green,
     Colors.blue,
     Colors.yellow,
+    Colors.deepPurple,
   ];
 
   ChartType _chartType = ChartType.ring;
-  bool _showCenterText = true;
-  double _ringStrokeWidth = 32;
-  double _chartLegendSpacing = 32;
+  bool _showCenterText = false;
+  double _ringStrokeWidth = 16;
+  double _chartLegendSpacing = 48;
 
   bool _showLegendsInRow = false;
   bool _showLegends = true;
 
   bool _showChartValueBackground = true;
   bool _showChartValues = true;
-  bool _showChartValuesInPercentage = false;
+  bool _showChartValuesInPercentage = true;
   bool _showChartValuesOutside = false;
 
   LegendShape _legendShape = LegendShape.Circle;
-  LegendPosition _legendPosition = LegendPosition.right;
+  LegendPosition _legendPosition = LegendPosition.left;
 
   int key = 0;
 
@@ -102,262 +100,9 @@ class _HomePageState extends State<HomePage> {
       ),
       ringStrokeWidth: _ringStrokeWidth,
     );
-    final settings = SingleChildScrollView(
-      child: Card(
-        margin: EdgeInsets.all(12),
-        child: Column(
-          children: [
-            ListTile(
-              title: Text(
-                'Pie Chart Options'.toUpperCase(),
-                style: Theme.of(context).textTheme.overline.copyWith(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text("chartType"),
-              trailing: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: DropdownButton<ChartType>(
-                  value: _chartType,
-                  items: [
-                    DropdownMenuItem(
-                      child: Text("disc"),
-                      value: ChartType.disc,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("ring"),
-                      value: ChartType.ring,
-                    ),
-                  ],
-                  onChanged: (val) {
-                    setState(() {
-                      _chartType = val;
-                    });
-                  },
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text("ringStrokeWidth"),
-              trailing: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: DropdownButton<double>(
-                  value: _ringStrokeWidth,
-                  disabledHint: Text("select chartType.ring"),
-                  items: [
-                    DropdownMenuItem(
-                      child: Text("16"),
-                      value: 16,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("32"),
-                      value: 32,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("48"),
-                      value: 48,
-                    ),
-                  ],
-                  onChanged: (_chartType == ChartType.ring)
-                      ? (val) {
-                    setState(() {
-                      _ringStrokeWidth = val;
-                    });
-                  }
-                      : null,
-                ),
-              ),
-            ),
-            SwitchListTile(
-              value: _showCenterText,
-              title: Text("showCenterText"),
-              onChanged: (val) {
-                setState(() {
-                  _showCenterText = val;
-                });
-              },
-            ),
-            ListTile(
-              title: Text("chartLegendSpacing"),
-              trailing: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: DropdownButton<double>(
-                  value: _chartLegendSpacing,
-                  disabledHint: Text("select chartType.ring"),
-                  items: [
-                    DropdownMenuItem(
-                      child: Text("16"),
-                      value: 16,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("32"),
-                      value: 32,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("48"),
-                      value: 48,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("64"),
-                      value: 64,
-                    ),
-                  ],
-                  onChanged: (val) {
-                    setState(() {
-                      _chartLegendSpacing = val;
-                    });
-                  },
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text(
-                'Legend Options'.toUpperCase(),
-                style: Theme.of(context).textTheme.overline.copyWith(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SwitchListTile(
-              value: _showLegendsInRow,
-              title: Text("showLegendsInRow"),
-              onChanged: (val) {
-                setState(() {
-                  _showLegendsInRow = val;
-                });
-              },
-            ),
-            SwitchListTile(
-              value: _showLegends,
-              title: Text("showLegends"),
-              onChanged: (val) {
-                setState(() {
-                  _showLegends = val;
-                });
-              },
-            ),
-            ListTile(
-              title: Text("legendShape"),
-              trailing: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: DropdownButton<LegendShape>(
-                  value: _legendShape,
-                  items: [
-                    DropdownMenuItem(
-                      child: Text("BoxShape.circle"),
-                      value: LegendShape.Circle,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("BoxShape.rectangle"),
-                      value: LegendShape.Rectangle,
-                    ),
-                  ],
-                  onChanged: (val) {
-                    setState(() {
-                      _legendShape = val;
-                    });
-                  },
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text("legendPosition"),
-              trailing: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: DropdownButton<LegendPosition>(
-                  value: _legendPosition,
-                  items: [
-                    DropdownMenuItem(
-                      child: Text("left"),
-                      value: LegendPosition.left,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("right"),
-                      value: LegendPosition.right,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("top"),
-                      value: LegendPosition.top,
-                    ),
-                    DropdownMenuItem(
-                      child: Text("bottom"),
-                      value: LegendPosition.bottom,
-                    ),
-                  ],
-                  onChanged: (val) {
-                    setState(() {
-                      _legendPosition = val;
-                    });
-                  },
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text(
-                'Chart values Options'.toUpperCase(),
-                style: Theme.of(context).textTheme.overline.copyWith(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            SwitchListTile(
-              value: _showChartValueBackground,
-              title: Text("showChartValueBackground"),
-              onChanged: (val) {
-                setState(() {
-                  _showChartValueBackground = val;
-                });
-              },
-            ),
-            SwitchListTile(
-              value: _showChartValues,
-              title: Text("showChartValues"),
-              onChanged: (val) {
-                setState(() {
-                  _showChartValues = val;
-                });
-              },
-            ),
-            SwitchListTile(
-              value: _showChartValuesInPercentage,
-              title: Text("showChartValuesInPercentage"),
-              onChanged: (val) {
-                setState(() {
-                  _showChartValuesInPercentage = val;
-                });
-              },
-            ),
-            SwitchListTile(
-              value: _showChartValuesOutside,
-              title: Text("showChartValuesOutside"),
-              onChanged: (val) {
-                setState(() {
-                  _showChartValuesOutside = val;
-                });
-              },
-            ),
-          ],
-        ),
-      ),
-    );
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pie Chart @apgapg"),
-        actions: [
-          RaisedButton(
-            onPressed: () {
-              setState(() {
-                key = key + 1;
-              });
-            },
-            child: Text("Reload".toUpperCase()),
-          ),
-        ],
+        title: Text("Expense Tracker"),
       ),
       body: LayoutBuilder(
         builder: (_, constraints) {
@@ -370,10 +115,6 @@ class _HomePageState extends State<HomePage> {
                   fit: FlexFit.tight,
                   child: chart,
                 ),
-                Flexible(
-                  flex: 1,
-                  child: settings,
-                )
               ],
             );
           } else {
@@ -386,13 +127,13 @@ class _HomePageState extends State<HomePage> {
                       vertical: 32,
                     ),
                   ),
-                  settings,
                 ],
               ),
             );
           }
         },
       ),
+      bottomNavigationBar: NavBar(),
     );
   }
 }
