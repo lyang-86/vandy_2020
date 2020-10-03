@@ -17,7 +17,7 @@ class _BottomTabbarExampleState extends State<NavBar>
     Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
   ];
   static const _kTabs = <Tab>[
-    Tab(icon: Icon(Icons.cloud), text: 'Tracker'),
+    Tab(icon: Icon(Icons.add_chart), text: 'Tracker'),
     Tab(icon: Icon(Icons.home_filled), text: 'Home'),
     Tab(icon: Icon(Icons.account_circle), text: 'Profile'),
   ];
