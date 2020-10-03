@@ -46,4 +46,7 @@ class UserInput {
   void resetIncome(){
     var income = new List();
   }
+  Map getExpenses(){
+    return(expenses);
+  }
 }
