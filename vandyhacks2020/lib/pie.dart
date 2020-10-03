@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'userinput.dart';
+import 'package:vandyhacks2020/userinput.dart';
 import 'global.dart' as globals;
 //import 'package:vandyhacks2020/navbar.dart';
 

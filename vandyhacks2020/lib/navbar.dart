@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 
+import 'pie.dart';
+
 class NavBar extends StatefulWidget {
   const NavBar({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _BottomTabbarExampleState();
+
+
+
 }
 
 class _BottomTabbarExampleState extends State<NavBar>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 
-  static const _kTabPages = <Widget>[
-    Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),
+  static  final _kTabPages = <Widget>[
+    Center(child: HomePage()),
     Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
     Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
   ];
