@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'global.dart' as globals;
 void main() {
   runApp(new TileApp());
   }
@@ -15,7 +15,7 @@ class TileApp extends StatelessWidget{
 }
 class TestPage extends StatelessWidget {
 
-  createAlertDialog(BuildContext context) {
+  Future<String> createAlertDialog(BuildContext context) {
     TextEditingController customController = new TextEditingController();
 
     return showDialog(context: context, builder: (context) {
@@ -23,12 +23,15 @@ class TestPage extends StatelessWidget {
           title: Text("Enter amount"),
           content: TextField(
             controller: customController,
+            keyboardType: TextInputType.number,
           ),
           actions: <Widget>[
             MaterialButton(
               elevation: 5.0,
               child: Text('Submit'),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop(customController.text.toString());
+              },
             )
           ]
       );
@@ -45,7 +48,9 @@ class TestPage extends StatelessWidget {
             child: Text('ExpansionTile App'),
           ),
         ),
-        body: new ExpansionTile(
+        body: new ListView(
+          children: [
+        ExpansionTile(
           title: new Text('Expenses', style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,),
           ),
           children: [
@@ -53,7 +58,9 @@ class TestPage extends StatelessWidget {
               dense: true,
               enabled: true,
               isThreeLine: false,
-              onTap: () {createAlertDialog(context);},
+              onTap: () {createAlertDialog(context).then((onValue){
+                globals.user.changeExpense('Rent', double.parse('onValue'));
+              });},
               selected: true,
               title: new Text('Rent', style: TextStyle(fontSize: 20, color:Colors.black)),
             ),
@@ -61,7 +68,9 @@ class TestPage extends StatelessWidget {
               dense: true,
               enabled: true,
               isThreeLine: false,
-              onTap: ()  {createAlertDialog(context);},
+              onTap: ()  {createAlertDialog(context).then((onValue){
+                globals.user.changeExpense('Utility', double.parse('onValue'));
+              });},
               selected: true,
               title: new Text('Utility', style: TextStyle(fontSize: 20, color:Colors.black)),
             ),
@@ -69,7 +78,9 @@ class TestPage extends StatelessWidget {
               dense: true,
               enabled: true,
               isThreeLine: false,
-              onTap: () {createAlertDialog(context);},
+              onTap: () {createAlertDialog(context).then((onValue){
+                globals.user.changeExpense('Subscriptions', double.parse('onValue'));
+              });},
               selected: true,
               title: new Text('Subscriptions', style: TextStyle(fontSize: 20, color:Colors.black)),
             ),
@@ -77,7 +88,9 @@ class TestPage extends StatelessWidget {
               dense: true,
               enabled: true,
               isThreeLine: false,
-              onTap: ()  {createAlertDialog(context);},
+              onTap: ()  {createAlertDialog(context).then((onValue){
+                globals.user.changeExpense('Bills', double.parse('onValue'));
+              });},
               selected: true,
               title: new Text('Bills', style: TextStyle(fontSize: 20, color:Colors.black)),
             ),
@@ -85,7 +98,9 @@ class TestPage extends StatelessWidget {
               dense: true,
               enabled: true,
               isThreeLine: false,
-              onTap: () {createAlertDialog(context);},
+              onTap: () {createAlertDialog(context).then((onValue){
+                globals.user.changeExpense('Savings', double.parse('onValue'));
+              });},
               selected: true,
               title: new Text('Savings', style: TextStyle(fontSize: 20, color:Colors.black)),
             ),
@@ -93,7 +108,9 @@ class TestPage extends StatelessWidget {
               dense: true,
               enabled: true,
               isThreeLine: false,
-              onTap: () {createAlertDialog(context);},
+              onTap: () {createAlertDialog(context).then((onValue){
+                globals.user.changeExpense('Food', double.parse('onValue'));
+              });},
               selected: true,
               title: new Text('Food', style: TextStyle(fontSize: 20, color:Colors.black)),
             ),
@@ -101,7 +118,9 @@ class TestPage extends StatelessWidget {
               dense: true,
               enabled: true,
               isThreeLine: false,
-              onTap: () {createAlertDialog(context);},
+              onTap: () {createAlertDialog(context).then((onValue){
+                globals.user.changeExpense('Clothes', double.parse('onValue'));
+              });},
               selected: true,
               title: new Text('Clothes', style: TextStyle(fontSize: 20, color:Colors.black)),
             ),
@@ -109,7 +128,9 @@ class TestPage extends StatelessWidget {
               dense: true,
               enabled: true,
               isThreeLine: false,
-              onTap: () {createAlertDialog(context);},
+              onTap: () {createAlertDialog(context).then((onValue){
+                globals.user.changeExpense('Electronics', double.parse('onValue'));
+              });},
               selected: true,
               title: new Text('Electronics', style: TextStyle(fontSize: 20, color:Colors.black)),
             ),
@@ -117,14 +138,63 @@ class TestPage extends StatelessWidget {
               dense: true,
               enabled: true,
               isThreeLine: false,
-              onTap: () {createAlertDialog(context);},
+              onTap: () {createAlertDialog(context).then((onValue){
+                globals.user.changeExpense('Other', double.parse('onValue'));
+              });},
               selected: true,
               title: new Text('Other', style: TextStyle(fontSize: 20, color:Colors.black)),
             ),
           ],
 
       ),
-    );
+        ExpansionTile(
+        title: new Text('Income', style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,),
+        ),
+        children: [
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: () {createAlertDialog(context).then((onValue){
+                globals.user.addIncome('Monthly', double.parse('onValue'));
+              });},
+              selected: true,
+              title: new Text('Monthly', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: ()  {createAlertDialog(context).then((onValue){
+                globals.user.addIncome('Bi-Weekly', double.parse('onValue'));
+              });},
+              selected: true,
+              title: new Text('Bi-Weekly', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: () {createAlertDialog(context).then((onValue){
+                globals.user.addIncome('Weekly', double.parse('onValue'));
+              });},
+              selected: true,
+              title: new Text('Weekly', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: ()  {createAlertDialog(context).then((onValue){
+                globals.user.addIncome('Misc', double.parse('onValue'));
+              });},
+              selected: true,
+              title: new Text('Misc', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ],
+
+        ),
+    ]));
   }
 }
 class UserInput {
@@ -153,7 +223,7 @@ class UserInput {
     }
   }
 
-  void addIncome(double amountEarned, {String income = 'Bi-Weekly'}){
+  void addIncome(String incomeType, double amountEarned){
     if(income == 'Bi-Weekly'){
       this.income.add(amountEarned*2);
     }
@@ -163,7 +233,7 @@ class UserInput {
     else if(income == 'Monthly'){
       this.income.add(amountEarned);
     }
-    else if(income == 'Misc'){
+    else{
       this.income.add(amountEarned);
     }
   }
