@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'pie.dart';
+import 'userinput.dart';
+import 'userinput.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key key}) : super(key: key);
@@ -19,13 +21,15 @@ class _BottomTabbarExampleState extends State<NavBar>
   static  final _kTabPages = <Widget>[
     Center(child: HomePage()),
     Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
-    Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
+    Center(child: TileApp()),
   ];
   static const _kTabs = <Tab>[
     Tab(icon: Icon(Icons.add_chart), text: 'Tracker'),
     Tab(icon: Icon(Icons.home_filled), text: 'Home'),
     Tab(icon: Icon(Icons.account_circle), text: 'Profile'),
   ];
+
+
 
   @override
   void initState() {
@@ -45,6 +49,19 @@ class _BottomTabbarExampleState extends State<NavBar>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TileApp()),
+          );
+        },
+        child: Icon(Icons.add),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.black,
+      ),
+
       appBar: null,
       body: TabBarView(
         children: _kTabPages,

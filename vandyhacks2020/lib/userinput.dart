@@ -35,6 +35,16 @@ class TileApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       home: new Scaffold(
+
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back),
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.black,
+        ),
+
         appBar: new AppBar(
           title: new Center(
             child: Text('ExpansionTile App'),
@@ -45,13 +55,6 @@ class TileApp extends StatelessWidget {
             return new StuffInTiles(listOfTiles[index]);
           },
           itemCount: listOfTiles.length,
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: null,
-          child: Icon(Icons.add),
-          foregroundColor: Colors.white,
-          backgroundColor: Colors.black45,
-          tooltip: 'Add Expense/Income',
         ),
       ),
     );
@@ -97,8 +100,7 @@ List<MyTile> listOfTiles = <MyTile>[
   new MyTile(
     'Add Expenses',
     <MyTile>[
-      new MyTile('Rent',)
-    ],
+      new MyTile('Rent'),
       new MyTile('Utility'),
       new MyTile('Subscriptions'),
       new MyTile('Bills'),

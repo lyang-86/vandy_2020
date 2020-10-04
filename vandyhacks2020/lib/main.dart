@@ -39,12 +39,6 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-//Moved navbar file over into main
-
-
-
-//end of navbar
-
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
