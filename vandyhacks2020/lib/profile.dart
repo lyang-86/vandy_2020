@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'global.dart';
 import 'main.dart';
 
 void main() => runApp(MyApp());
@@ -34,7 +35,7 @@ class Profile extends StatelessWidget {
               ),
             ),
             Text(
-              'Money(?)',
+              'Income = ',
               style: TextStyle(
                 fontSize: 30.0,
                 color: Colors.green,

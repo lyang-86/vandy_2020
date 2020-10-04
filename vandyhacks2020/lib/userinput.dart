@@ -47,7 +47,7 @@ class TestPage extends StatelessWidget {
       resizeToAvoidBottomPadding: false,
         appBar: new AppBar(
           title: new Center(
-            child: Text('ExpansionTile App'),
+            child: Text('Configure Income or Expense'),
           ),
         ),
         body: new ListView(

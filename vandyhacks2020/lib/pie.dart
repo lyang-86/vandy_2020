@@ -167,7 +167,7 @@ class _HomePageState extends State<HomePage> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text("Expense Tracker),
+        title: Text("Expense Tracker"),
         actions: [
           RaisedButton(
             onPressed: () {

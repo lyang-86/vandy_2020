@@ -3,6 +3,7 @@ import 'package:vandyhacks2020/userinput.dart';
 import 'package:vandyhacks2020/pie.dart';
 import 'package:vandyhacks2020/navbar.dart';
 import 'package:vandyhacks2020/profile.dart';
+import 'package:vandyhacks2020/homepage.dart';
 void main() {
   runApp(MyApp());
 }
@@ -12,12 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      home: NavBar(),
       title: 'Test',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: NavBar(),
     );
   }
 }
@@ -48,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     NavBar(),
     HomePage(),
     Profile(),
+    FrontPage(),
   ];
 
   void onTappedBar(int index){
