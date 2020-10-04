@@ -1,9 +1,4 @@
-import 'dart:ffi';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:vandyhacks2020/pie.dart';
-import 'package:flutter/services.dart';
-
 
 void main() {
   runApp(new TileApp());

@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Pie Chart Demo',
+      title: 'Pie Chart',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
