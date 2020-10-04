@@ -45,6 +45,7 @@ class TestPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
+        backgroundColor: Colors.blueGrey,
         appBar: new AppBar(
           title: new Center(
             child: Text('Configure Income or Expense'),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'global.dart' as globals;
 import 'userinput.dart';
+import 'dart:convert';
 
 void main() => runApp(MyApp());
 
@@ -16,6 +17,7 @@ class FrontPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
         title: new Center(
           child: Text("Home Screen"),

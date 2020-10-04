@@ -48,7 +48,6 @@ class _BottomTabbarExampleState extends State<NavBar>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           Navigator.push(
