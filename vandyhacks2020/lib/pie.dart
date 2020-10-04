@@ -116,6 +116,7 @@ class _HomePageState extends State<HomePage> {
     );
     final settings = SingleChildScrollView(
       child: Card(
+        color: Colors.blueGrey,
         margin: EdgeInsets.all(11),
         child: Column(
             children: [
@@ -166,6 +167,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
     return Scaffold(
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
         title: Text("Expense Tracker"),
         actions: [
