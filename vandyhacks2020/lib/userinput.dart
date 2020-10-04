@@ -206,6 +206,7 @@ class UserInput {
   var expenses;
   var income;
   var lastWeeksExpenses = lastDefaultExpenses;
+  var totalExpenses = 90.0;
 
   UserInput(List income, Map <String,double>expenses){
     this.income = income;
@@ -221,10 +222,9 @@ class UserInput {
   }
 
   void changeExpense(String expense, double changedValue){
-      print(expenses);
+      totalExpenses -= expenses[expense];
       expenses[expense] = changedValue;
-      print(expenses);
-
+      totalExpenses += expenses[expense;]
   }
 
   void addIncome(String incomeType, double amountEarned){
