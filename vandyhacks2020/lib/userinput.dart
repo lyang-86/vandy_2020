@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'pie.dart';
 import 'package:flutter/material.dart';
 import 'global.dart' as globals;
 void main() {
@@ -207,7 +207,7 @@ class UserInput {
   var income;
   var lastWeeksExpenses = lastDefaultExpenses;
 
-  UserInput(List income, Map expenses){
+  UserInput(List income, Map <String,double>expenses){
     this.income = income;
     this.expenses = expenses;
   }
@@ -224,6 +224,7 @@ class UserInput {
       print(expenses);
       expenses[expense] = changedValue;
       print(expenses);
+
   }
 
   void addIncome(String incomeType, double amountEarned){
