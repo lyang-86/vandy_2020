@@ -1,11 +1,21 @@
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:vandyhacks2020/userinput.dart';
 import 'global.dart' as globals;
-//import 'package:vandyhacks2020/navbar.dart';
 
 void main() {
+  globals.user.expenses.forEach((key,value) {
+    if(value > globals.user.lastWeeksExpenses[key]){
+      globals.increases.add(key);
+    }
+    else if(value < globals.user.lastWeeksExpenses[key]){
+      globals.decreases.add(key);
+    }
+    else{
+      globals.stagnant.add(key);
+    }
+  });
   runApp(MyApp());
 }
 
@@ -36,18 +46,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Map dataMap = globals.user.expenses;
+  Map dataMap2 = globals.user.lastWeeksExpenses;
   List<Color> colorList = [
-    Colors.red,
-    Colors.green,
-    Colors.blue,
-    Colors.yellow,
-    Colors.deepPurple,
+    Color(0xffCE5D6E),
+    Color(0xff3C405B),
+    Color(0xff349382),
+    Color(0xff86D8C9),
+    Color(0xffF5C35A),
+    Color(0xff839EA1),
+    Color(0xffADC8CB),
+    Color(0xffE0D7D7),
+    Color(0xffA69BC8),
   ];
 
   ChartType _chartType = ChartType.ring;
-  bool _showCenterText = false;
-  double _ringStrokeWidth = 16;
-  double _chartLegendSpacing = 48;
+  double _ringStrokeWidth = 14;
+  double _chartLegendSpacing = 20;
 
   bool _showLegendsInRow = false;
   bool _showLegends = true;
@@ -57,11 +71,10 @@ class _HomePageState extends State<HomePage> {
   bool _showChartValuesInPercentage = true;
   bool _showChartValuesOutside = false;
 
-  LegendShape _legendShape = LegendShape.Circle;
+  LegendShape _legendShape = LegendShape.Rectangle;
   LegendPosition _legendPosition = LegendPosition.left;
 
   int key = 0;
-
   @override
   Widget build(BuildContext context) {
 
@@ -73,16 +86,15 @@ class _HomePageState extends State<HomePage> {
       chartRadius: MediaQuery
           .of(context)
           .size
-          .width / 3.2 > 300
+          .width / 2.0 > 300
           ? 300
           : MediaQuery
           .of(context)
           .size
-          .width / 3.2,
+          .width / 2.0,
       colorList: colorList,
       initialAngleInDegree: 0,
       chartType: _chartType,
-      centerText: _showCenterText ? "HYBRID" : null,
       legendOptions: LegendOptions(
         showLegendsInRow: _showLegendsInRow,
         legendPosition: _legendPosition,
@@ -101,6 +113,57 @@ class _HomePageState extends State<HomePage> {
         showChartValuesOutside: _showChartValuesOutside,
       ),
       ringStrokeWidth: _ringStrokeWidth,
+    );
+    final settings = SingleChildScrollView(
+      child: Card(
+        margin: EdgeInsets.all(11),
+        child: Column(
+            children: [
+        ListTile(
+        title: Text(
+        'summary'.toUpperCase(),
+        style: Theme.of(context).textTheme.overline.copyWith(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ListTile(
+          title: Text('INCREASED',style: Theme.of(context).textTheme.overline.copyWith(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          ),
+          ),
+        ),
+        ListTile(
+          title: Text(globals.increases.join('\n'), style: TextStyle(fontSize: 17)
+              ),),
+        ListTile(
+                title: Text('DECREASED',style: Theme.of(context).textTheme.overline.copyWith(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+              ),
+        ListTile(
+          title: Text(globals.decreases.join('\n'), style: TextStyle(fontSize: 17)
+              ),),
+        ListTile(
+                title: Text('STAGNANT',style: Theme.of(context).textTheme.overline.copyWith(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+              ),
+        ListTile(
+          title: Text(globals.stagnant.join('\n'), style: TextStyle(fontSize: 17)
+              ),),
+        ListTile(
+                title: Text("")
+        ),
+            ],
+        ),
+      ),
     );
     return Scaffold(
       appBar: AppBar(
@@ -129,6 +192,7 @@ class _HomePageState extends State<HomePage> {
                       vertical: 32,
                     ),
                   ),
+                  settings,
                 ],
               ),
             );

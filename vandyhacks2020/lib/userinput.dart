@@ -122,10 +122,11 @@ List<MyTile> listOfTiles = <MyTile>[
 
 class UserInput {
 
-  static const defaultExpenses = {'Rent': 0.0, 'Utility': 0.0, 'Subscriptions': 0.0, 'Bills': 0.0, 'Savings': 0.0, 'Food': 0.0, 'Clothes': 0.0, 'Electronics': 0.0, 'Other': 0.0};
+  static const defaultExpenses = {'Rent': 10.0, 'Utility': 10.0, 'Subscriptions': 10.0, 'Bills': 10.0, 'Savings': 10.0, 'Food': 10.0, 'Clothes': 10.0, 'Electronics': 10.0, 'Other': 10.0};
+  static const lastDefaultExpenses = {'Rent': 1.0, 'Utility': 10.0, 'Subscriptions': 1.0, 'Bills': 1.0, 'Savings': 10.0, 'Food': 10.0, 'Clothes': 10.0, 'Electronics': 1.0, 'Other': 1.0};
   var expenses = defaultExpenses;
   var income;
-  var lastWeeksExpenses = defaultExpenses;
+  var lastWeeksExpenses = lastDefaultExpenses;
 
   UserInput(List income){
     this.income = income;
