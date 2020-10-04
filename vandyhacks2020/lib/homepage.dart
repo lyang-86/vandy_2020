@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'global.dart';
+import 'global.dart' as globals;
 import 'userinput.dart';
 
 void main() => runApp(MyApp());
@@ -39,7 +39,7 @@ class FrontPage extends StatelessWidget {
         Align(
           alignment: Alignment.bottomCenter,
           child: Text(
-            'Total Expenses = ',
+            'Disposable Income = '+ (globals.user.income-globals.user.totalExpenses).toString(),
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20,

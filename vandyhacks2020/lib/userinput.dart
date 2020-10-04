@@ -208,7 +208,7 @@ class UserInput {
   var lastWeeksExpenses = lastDefaultExpenses;
   var totalExpenses = 90.0;
 
-  UserInput(List income, Map <String,double>expenses){
+  UserInput(var income, Map <String,double>expenses){
     this.income = income;
     this.expenses = expenses;
   }
@@ -224,26 +224,26 @@ class UserInput {
   void changeExpense(String expense, double changedValue){
       totalExpenses -= expenses[expense];
       expenses[expense] = changedValue;
-      totalExpenses += expenses[expense;]
+      totalExpenses += expenses[expense];
   }
 
   void addIncome(String incomeType, double amountEarned){
     if(income == 'Bi-Weekly'){
-      this.income.add(amountEarned*2);
+      income+=(amountEarned*2);
     }
     else if(income == 'Weekly'){
-      this.income.add(amountEarned*4);
+      income+=(amountEarned*4);
     }
     else if(income == 'Monthly'){
-      this.income.add(amountEarned);
+      income+=amountEarned;
     }
     else{
-      this.income.add(amountEarned);
+      income+=amountEarned;
     }
   }
 
   void resetIncome(){
-    income = new List();
+    income = 0;
   }
 
   Map getExpenses(){

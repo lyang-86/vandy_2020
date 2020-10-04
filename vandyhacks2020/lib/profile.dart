@@ -34,15 +34,6 @@ class Profile extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
-              'Income = ',
-              style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.green,
-                letterSpacing: 2,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             SizedBox(
               height: 20,
               width: 200,
