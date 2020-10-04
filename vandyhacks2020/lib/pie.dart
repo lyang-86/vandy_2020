@@ -167,9 +167,17 @@ class _HomePageState extends State<HomePage> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: new Center(
-          child: Text("Expense Tracker"),
-        ),
+        title: Text("Expense Tracker),
+        actions: [
+          RaisedButton(
+            onPressed: () {
+              setState(() {
+                key = key + 1;
+              });
+            },
+            child: Text("Reload".toUpperCase()),
+          ),
+        ],
       ),
       body: LayoutBuilder(
         builder: (_, constraints) {

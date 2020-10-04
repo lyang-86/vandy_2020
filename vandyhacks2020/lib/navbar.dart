@@ -10,8 +10,6 @@ class NavBar extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _BottomTabbarExampleState();
 
-
-
 }
 
 class _BottomTabbarExampleState extends State<NavBar>
