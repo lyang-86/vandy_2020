@@ -59,7 +59,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: () {createAlertDialog(context).then((onValue){
-                globals.user.changeExpense('Rent', double.parse('onValue'));
+                globals.user.changeExpense('Rent', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Rent', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -69,7 +69,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: ()  {createAlertDialog(context).then((onValue){
-                globals.user.changeExpense('Utility', double.parse('onValue'));
+                globals.user.changeExpense('Utility', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Utility', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -79,7 +79,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: () {createAlertDialog(context).then((onValue){
-                globals.user.changeExpense('Subscriptions', double.parse('onValue'));
+                globals.user.changeExpense('Subscriptions', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Subscriptions', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -89,7 +89,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: ()  {createAlertDialog(context).then((onValue){
-                globals.user.changeExpense('Bills', double.parse('onValue'));
+                globals.user.changeExpense('Bills', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Bills', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -99,7 +99,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: () {createAlertDialog(context).then((onValue){
-                globals.user.changeExpense('Savings', double.parse('onValue'));
+                globals.user.changeExpense('Savings', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Savings', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -109,7 +109,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: () {createAlertDialog(context).then((onValue){
-                globals.user.changeExpense('Food', double.parse('onValue'));
+                globals.user.changeExpense('Food', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Food', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -119,7 +119,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: () {createAlertDialog(context).then((onValue){
-                globals.user.changeExpense('Clothes', double.parse('onValue'));
+                globals.user.changeExpense('Clothes', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Clothes', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -129,7 +129,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: () {createAlertDialog(context).then((onValue){
-                globals.user.changeExpense('Electronics', double.parse('onValue'));
+                globals.user.changeExpense('Electronics', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Electronics', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -139,7 +139,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: () {createAlertDialog(context).then((onValue){
-                globals.user.changeExpense('Other', double.parse('onValue'));
+                globals.user.changeExpense('Other', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Other', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -156,7 +156,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: () {createAlertDialog(context).then((onValue){
-                globals.user.addIncome('Monthly', double.parse('onValue'));
+                globals.user.addIncome('Monthly', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Monthly', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -166,7 +166,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: ()  {createAlertDialog(context).then((onValue){
-                globals.user.addIncome('Bi-Weekly', double.parse('onValue'));
+                globals.user.addIncome('Bi-Weekly', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Bi-Weekly', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -176,7 +176,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: () {createAlertDialog(context).then((onValue){
-                globals.user.addIncome('Weekly', double.parse('onValue'));
+                globals.user.addIncome('Weekly', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Weekly', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -186,7 +186,7 @@ class TestPage extends StatelessWidget {
               enabled: true,
               isThreeLine: false,
               onTap: ()  {createAlertDialog(context).then((onValue){
-                globals.user.addIncome('Misc', double.parse('onValue'));
+                globals.user.addIncome('Misc', double.parse(onValue));
               });},
               selected: true,
               title: new Text('Misc', style: TextStyle(fontSize: 20, color:Colors.black)),
@@ -201,12 +201,13 @@ class UserInput {
 
   static const defaultExpenses = {'Rent': 10.0, 'Utility': 10.0, 'Subscriptions': 10.0, 'Bills': 10.0, 'Savings': 10.0, 'Food': 10.0, 'Clothes': 10.0, 'Electronics': 10.0, 'Other': 10.0};
   static const lastDefaultExpenses = {'Rent': 1.0, 'Utility': 10.0, 'Subscriptions': 1.0, 'Bills': 1.0, 'Savings': 10.0, 'Food': 10.0, 'Clothes': 10.0, 'Electronics': 1.0, 'Other': 1.0};
-  var expenses = defaultExpenses;
+  var expenses;
   var income;
   var lastWeeksExpenses = lastDefaultExpenses;
 
-  UserInput(List income){
+  UserInput(List income, Map expenses){
     this.income = income;
+    this.expenses = expenses;
   }
 
   void clearExpense(String expense){
@@ -218,9 +219,7 @@ class UserInput {
   }
 
   void changeExpense(String expense, double changedValue){
-    if(expenses.containsKey(expense)){
       expenses[expense] = changedValue;
-    }
   }
 
   void addIncome(String incomeType, double amountEarned){
