@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'pie.dart';
 import 'userinput.dart';
-import 'userinput.dart';
+import 'profile.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key key}) : super(key: key);
@@ -21,7 +21,7 @@ class _BottomTabbarExampleState extends State<NavBar>
   static  final _kTabPages = <Widget>[
     Center(child: HomePage()),
     Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
-    Center(child: TileApp()),
+    Center(child: Profile()),
   ];
   static const _kTabs = <Tab>[
     Tab(icon: Icon(Icons.add_chart), text: 'Tracker'),

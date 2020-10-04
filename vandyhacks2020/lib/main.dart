@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vandyhacks2020/userinput.dart';
 import 'package:vandyhacks2020/pie.dart';
 import 'package:vandyhacks2020/navbar.dart';
+import 'package:vandyhacks2020/profile.dart';
 void main() {
   runApp(MyApp());
 }
@@ -44,11 +45,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _currentIndex = 0;
   final List<Widget> _children = [
-
     NavBar(),
     HomePage(),
-
-
+    Profile(),
   ];
 
   void onTappedBar(int index){

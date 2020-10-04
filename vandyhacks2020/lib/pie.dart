@@ -104,7 +104,9 @@ class _HomePageState extends State<HomePage> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text("Expense Tracker"),
+        title: new Center(
+          child: Text("Expense Tracker"),
+        ),
       ),
       body: LayoutBuilder(
         builder: (_, constraints) {

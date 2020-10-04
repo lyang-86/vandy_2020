@@ -47,7 +47,7 @@ class TileApp extends StatelessWidget {
 
         appBar: new AppBar(
           title: new Center(
-            child: Text('ExpansionTile App'),
+            child: Text('Expenses'),
           ),
         ),
         body: new ListView.builder(
