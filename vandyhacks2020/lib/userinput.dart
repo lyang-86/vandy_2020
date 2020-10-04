@@ -7,119 +7,131 @@ import 'package:flutter/services.dart';
 
 void main() {
   runApp(new TileApp());
-  /*
-  runApp(MaterialApp
+  }
 
-    title: "User Input Button",
-
-    home: Scaffold(
-      drawer: Drawer(),
-      appBar: AppBar(
-        title: Text('Add Input/Expenses'),
-        backgroundColor: Colors.black12,
-      ),
-      body: ExpansionTile(
-        title: Text('Add Expenses'),
-        children: <Widget>[
-          Text('Rent')
-        ],
-      ),
-    ),
-  ));
-   */
-}
-
-
-class TileApp extends StatelessWidget {
+class TileApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
+    return MaterialApp(
+      title: 'Test',
+      home: TestPage(),
+    );
+  }
+}
+class TestPage extends StatelessWidget {
 
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){
-            Navigator.pop(context);
-          },
-          child: Icon(Icons.arrow_back),
-          foregroundColor: Colors.white,
-          backgroundColor: Colors.black,
-        ),
+  createAlertDialog(BuildContext context) {
+    TextEditingController customController = new TextEditingController();
 
+    return showDialog(context: context, builder: (context) {
+      return AlertDialog(
+          title: Text("Enter amount"),
+          content: TextField(
+            controller: customController,
+          ),
+          actions: <Widget>[
+            MaterialButton(
+              elevation: 5.0,
+              child: Text('Submit'),
+              onPressed: () {},
+            )
+          ]
+      );
+    }
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      resizeToAvoidBottomPadding: false,
         appBar: new AppBar(
           title: new Center(
             child: Text('ExpansionTile App'),
           ),
         ),
-        body: new ListView.builder(
-          itemBuilder: (BuildContext context, int index) {
-            return new StuffInTiles(listOfTiles[index]);
-          },
-          itemCount: listOfTiles.length,
-        ),
+        body: new ExpansionTile(
+          title: new Text('Expenses', style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,),
+          ),
+          children: [
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: () {createAlertDialog(context);},
+              selected: true,
+              title: new Text('Rent', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: ()  {createAlertDialog(context);},
+              selected: true,
+              title: new Text('Utility', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: () {createAlertDialog(context);},
+              selected: true,
+              title: new Text('Subscriptions', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: ()  {createAlertDialog(context);},
+              selected: true,
+              title: new Text('Bills', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: () {createAlertDialog(context);},
+              selected: true,
+              title: new Text('Savings', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: () {createAlertDialog(context);},
+              selected: true,
+              title: new Text('Food', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: () {createAlertDialog(context);},
+              selected: true,
+              title: new Text('Clothes', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: () {createAlertDialog(context);},
+              selected: true,
+              title: new Text('Electronics', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+            ListTile(
+              dense: true,
+              enabled: true,
+              isThreeLine: false,
+              onTap: () {createAlertDialog(context);},
+              selected: true,
+              title: new Text('Other', style: TextStyle(fontSize: 20, color:Colors.black)),
+            ),
+          ],
+
       ),
     );
   }
 }
-
-class StuffInTiles extends StatelessWidget {
-  final MyTile myTile;
-  StuffInTiles(this.myTile);
-
-  @override
-  Widget build(BuildContext context) {
-    return _buildTiles(myTile);
-  }
-
-  Widget _buildTiles(MyTile t) {
-    if (t.children.isEmpty)
-      return new ListTile(
-          dense: true,
-          enabled: true,
-          isThreeLine: false,
-          onLongPress: () => print("long press"),
-          onTap: () => print("tap"),
-          selected: true,
-          title: new Text(t.title, style: TextStyle(fontSize: 20,color:Colors.black),)
-      );
-
-    return new ExpansionTile(
-      key: new PageStorageKey<int>(3),
-      title: new Text(t.title, style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,),),
-      children: t.children.map(_buildTiles).toList(),
-    );
-  }
-}
-
-class MyTile {
-  String title;
-  List<MyTile> children;
-  MyTile(this.title, [this.children = const <MyTile>[]]);
-}
-
-List<MyTile> listOfTiles = <MyTile>[
-  new MyTile(
-    'Add Expenses',
-    <MyTile>[
-      new MyTile('Rent'),
-      new MyTile('Utility'),
-      new MyTile('Subscriptions'),
-      new MyTile('Bills'),
-      new MyTile('Savings'),
-      new MyTile('Other'),
-    ],
-  ),
-  new MyTile(
-    'Add Income',
-    <MyTile>[
-      new MyTile('Weekly'),
-      new MyTile('Bi-Weekly'),
-      new MyTile('Monthly'),
-      new MyTile('Misc.'),
-    ],
-  ),
-];
-
-
 class UserInput {
 
   static const defaultExpenses = {'Rent': 0.0, 'Utility': 0.0, 'Subscriptions': 0.0, 'Bills': 0.0, 'Savings': 0.0, 'Food': 0.0, 'Clothes': 0.0, 'Electronics': 0.0, 'Other': 0.0};
